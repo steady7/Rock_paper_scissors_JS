@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+     <script type="text/javascript">
+       let wins_player = 0;
+       let wins_bot = 0;
+       let computerPlay = () => Math.floor((Math.random()*3)+1);
+        function play_round(playerSelection,computerSelection){
+        if(playerSelection == 1){
+          if(computerSelection == 1) return "TIE!!";
+          else{
+            if(computerSelection == 2){
+              wins_bot++;
+              return ("You lost! (" + wins_bot + ")");
+            }
+            else{
+              wins_player++;
+                return ("You won! (" + wins_player + ")");
+            }
+          }
+        }
+        if(playerSelection == 2){
+          if(computerSelection == 2) return "TIE!!";
+          else{
+            if(computerSelection == 3){
+              wins_bot++;
+              return ("You lost! (" + wins_bot + ")");
+            }
+            else{
+              wins_player++;
+                return ("You won! (" + wins_player + ")");
+            }
+          }
+        }
+        if(playerSelection == 3){
+          if(computerSelection == 3) return "TIE!!";
+          else{
+            if(computerSelection == 1){
+              wins_bot++;
+              return ("You lost! (" + wins_bot + ")");
+            }
+            else{
+              wins_player++;
+                return ("You won! (" + wins_player + ")");
+            }
+          }
+        }
+        }
+        function game(){
+          while(wins_bot != 5 && wins_player != 5){
+             let playerSelection = prompt("Make your pick god damnit!");
+             playerSelection = playerSelection.toUpperCase();
+             switch(playerSelection){
+               case "ROCK": playerSelection = 1;break;
+               case "PAPER": playerSelection = 2;break;
+               case "SCISSORS": playerSelection = 3;break;
+             }
+             let computerSelection = computerPlay();
+             switch(computerSelection){
+               case 1: {
+                 console.log("pc played ROCK!");
+                 break;
+               }
+               case 2: {
+                 console.log("pc played PAPER!");
+                 break;
+               }
+               case 3: {
+                 console.log("pc played SCISSORS!");
+                 break;
+               }
+             }
+             console.log(play_round(playerSelection,computerSelection));
+          }
+          if(wins_player == 5) console.log("PLAYER WON!!");
+          else console.log("COMPUTER WON!!");
+        }
+        game();
+     </script>
+  </body>
+</html>
